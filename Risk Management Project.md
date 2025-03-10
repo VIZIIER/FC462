@@ -104,12 +104,12 @@
 
 ### Backup Strategy
 1. **Primary Data Center Backup**
-   - Location: Austin, Texas
+   - Location: Medina, Kingdom of Saudi Arabia
    - Frequency: Real-time incremental
    - Storage: Encrypted cloud storage
 
 2. **Secondary Backup Site**
-   - Location: Dallas, Texas
+   - Location: Riyadh, Kingdom of Saudi Arabia
    - Synchronization: Daily full backup
    - Isolated network environment
 
