@@ -25,11 +25,11 @@
 | HW-03 | Network Infrastructure | 25 | SR95,000 | Main Office & Branch |
 
 ### Software Assets
-| Asset ID | Software Name | Type | Annual License Cost | Critical Level |
-|----------|---------------|------|---------------------|----------------|
-| SW-01 | Customer Database System | Core Application | SR45,000 | High |
-| SW-02 | Development Environment | Internal Tool | SR25,000 | High |
-| SW-03 | Cloud Management Platform | Infrastructure | SR60,000 | Critical |
+| Asset ID | Software Name           | Type       | License Cost | Business Value | Critical Level |
+|----------|-------------------------|------------|--------------|----------------|----------------|
+| SW-01    | Customer Database       | Core App   | SR45,000     | SR250,000      | High           |
+| SW-02    | Development Environment | Internal   | SR25,000     | SR150,000      | High           |
+| SW-03    | Cloud Management        | Infrastructure | SR60,000 | SR500,000      | Critical       |
 
 ### Data Assets
 | Asset ID | Data Type | Sensitivity | Estimated Value | Protection Required |
@@ -53,6 +53,8 @@
 - Asset Value: SR250,000
 - Threat: Data Breach
 - Vulnerability: Weak Access Controls
+- SLE: SR250,000 × 0.15 = SR37,500 (detaild down)
+- ALE: SR37,500 × 0.5 = SR18,750 (detaild down)
 
 **Single Loss Expectancy (SLE) Calculation**:
 - Probability of Breach: 15%
@@ -86,20 +88,14 @@
 3. **Level 3 (High)**: Active security breach
 
 ### Response Workflow
-1. **Detection**
-   - Automated monitoring systems
-   - Security Information and Event Management (SIEM) alerts
+1. **Detect**
+   - SIEM alerts (Wazuh)
+   - AWS GuardDuty monitoring
    - Employee reporting mechanisms
 
-2. **Containment**
-   - Immediate isolation of affected systems
-   - Network segmentation
-   - Access revocation
-
-3. **Eradication**
-   - Malware removal
-   - Vulnerability patching
-   - System restoration from clean backups
+2. **Respond**
+   - Contain: Isolate systems, revoke access
+   - Eradicate: Remove malware, patch vulnerabilities
 
 4. **Recovery**
    - System validation
@@ -153,10 +149,49 @@
 | Backup Restoration   | Monthly       | DevOps Team           |
 | RTO Validation       | Bi-annually   | Security Team         |
 
-### Cloud Recovery Scripts
-```bash
-# AWS EC2 Recovery Script (example)
-aws ec2 run-instances \
-  --image-id ami-0abcdef1234567890 \
-  --instance-type t3.large \
-  --subnet-id subnet-0123456789abcdef0
+
+
+## 6. Business Continuity Plan
+### Critical Functions
+1. **Customer portal**
+2. **Billing systems**
+3. **Development environments**
+
+### Remote Work Setup
+- VPN: OpenVPN with MFA
+- Collaboration: Mattermost backup server
+- MDM-enforced device encryption
+
+
+## 7. NIST CSF Alignment
+
+| Function  | Control          | Implementation               |
+|-----------|------------------|------------------------------|
+| Identify  | Asset Inventory  | Hardware/software catalog    |
+| Protect   | MFA              | All admin accounts           |
+| Detect    | SIEM             | Wazuh alerts                |
+| Respond   | IR Plan          | Section 4 procedures        |
+| Recover   | Backups          | Daily validation            |
+
+
+## 8. Conclusion
+1. Implement MFA everywhere
+2. Quarterly penetration tests
+3. Continuous staff training
+
+### Appendices
+**Task Allocation**
+
+| Member       | Responsibility          | Deliverables                          |
+|--------------|-------------------------|---------------------------------------|
+| Sultan       | Asset Management        | Hardware/software catalog             |
+| Mohammed     | Risk Assessment         | SLE/ALE calculations, Threat matrix   |
+| Abdulaziz    | Incident Response       | IRP workflows, Tool configurations    |
+| Abdulrahman  | Disaster Recovery       | DRP procedures, Cloud recovery scripts|
+| Saud         | Business Continuity     | Remote work policies, Supplier agreements |
+
+- Sultan
+- Mohammed
+- Abdulaziz
+- Abdulrahman
+- Saud
